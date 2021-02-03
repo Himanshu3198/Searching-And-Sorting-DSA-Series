@@ -1,3 +1,6 @@
+/*
+" Merge Sort Algorithm using c++ "
+    Time Complexiy O(n*log(n))   */
 #include <bits/stdc++.h>
 using namespace std;
 
