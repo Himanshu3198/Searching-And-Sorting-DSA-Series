@@ -3,7 +3,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void SelectionSort(int arr[], int n)
+void InsertionSort(int arr[], int n)
 {
     for (int i = 1; i < n; i++)
     {
@@ -31,7 +31,7 @@ int main()
 {
     int arr[] = {12, 13, 3, 2, 8};
     int n = sizeof(arr) / sizeof(arr[0]);
-    SelectionSort(arr, n);
+    InsertionSort(arr, n);
     printArray(arr,n);
     return 0;
 }
