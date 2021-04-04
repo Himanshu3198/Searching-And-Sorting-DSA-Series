@@ -6,7 +6,7 @@ using namespace std;
 void  ProductArray(vector<int>&nums){
 
 
-        vector<int>left(nums.size());
+           vector<int>left(nums.size());
         
         left[0]=1;
         
@@ -16,15 +16,17 @@ void  ProductArray(vector<int>&nums){
         }
         
         
-        int right_remain=1;
+        int right_remain=nums[nums.size()-1];
         
         
         for(int i=nums.size()-2;i>=0;i--){
             
-            left[i]=left[i]*nums[i+1]*right_remain;
+            left[i]=left[i]*right_remain;
             
-            right_remain=right_remain*nums[i+1];
+            right_remain=right_remain*nums[i];
         }
+        
+        
         
         for(auto it:left){
             cout<<it<<"\n";
