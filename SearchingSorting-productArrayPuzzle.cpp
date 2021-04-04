@@ -1,5 +1,5 @@
 // 238. Product of Array Except Self
-
+// time complexity O(n)
 #include<bits/stdc++.h>
 using namespace std;
 
