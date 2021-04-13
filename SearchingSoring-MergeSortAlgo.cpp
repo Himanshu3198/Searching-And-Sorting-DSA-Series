@@ -1,23 +1,25 @@
-/*
-" Merge Sort Algorithm using c++ "
-    Time Complexiy O(n*log(n))   */
+
+/*  Merge Sort algorithm
+      time Complexity O(n*log(n)  
+      */
 #include <bits/stdc++.h>
 using namespace std;
 
-void merge(int arr[], int *L , int leftcount, int *R , int rightcount)
+void merge(int *arr, int *L , int leftcount, int *R , int rightcount)
 {
 
     int i = 0, j = 0, k = 0;
     while (i < leftcount && j < rightcount)
     {
         if (L[i] < R[j])
-        {
+        {    // modifying arr if L[i] less than R[j] and increament i,k for next comparison
             arr[k] = L[i];
             k++;
             i++;
         }
         else
         {
+              // modifying arr if R[j] greater than L[i] and increament j,k for next comparison
             arr[k] = R[j];
             k++;
             j++;
@@ -25,16 +27,21 @@ void merge(int arr[], int *L , int leftcount, int *R , int rightcount)
 
 
     }
+      // this case arrived when either i or j reach to max iteration
+    //   then remaining element can placed as it is i.e
+    //  arr[5,6,7]   L[11 12 13]
 
         while (i < leftcount)
         {
             arr[k] = L[i];
             k++;
             i++;
+
+            //arr[5,6,7,11,12,13]
         }
         while (j < rightcount)
         {
-            arr[k++] = R[j++];
+            arr[k] = R[j];
             k++;
             j++;
         }
@@ -49,12 +56,8 @@ void mergeSort(int arr[], int n)
     }
     mid = n / 2;
 
-    // L = (int *)malloc(mid * sizeof(int));
-
-        // R = (int *)malloc((n - mid) * sizeof(int *));
-
-  int *L=new int(mid);
-   int *R=new int ((n-mid));
+  int L[mid];
+  int R[n-mid];
 
     for (int i = 0; i < mid; i++)
     {
@@ -69,12 +72,12 @@ void mergeSort(int arr[], int n)
     mergeSort(L, mid);
     mergeSort(R, n - mid);
     merge(arr, L, mid, R, n - mid);
-    free(L);
-    free(R);
 }
 int main()
 {
-    int arr[] = {6, 2, 3, 1, 9, 10, 15, 13, 12, 17};
+    // int arr[] = {12, 11, 13, 5, 6, 7};
+        int arr[] = {6, 2, 3, 1, 9, 10, 15, 13, 12, 17};
+
     int sizeofarr = sizeof(arr) / sizeof(arr[0]);
 
     mergeSort(arr, sizeofarr);
@@ -84,3 +87,4 @@ int main()
     }
     cout<<"\n";
 }
+
