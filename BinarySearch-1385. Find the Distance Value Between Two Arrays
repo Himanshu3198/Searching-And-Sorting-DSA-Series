@@ -1,0 +1,36 @@
+     int count = 0;
+        sort(arr2.begin(), arr2.end());
+        for(int num : arr1)
+        {
+            auto low = lower_bound(arr2.begin(), arr2.end(), num);
+            auto high = upper_bound(arr2.begin(), arr2.end(), num);
+            if(low != high)
+            {
+                continue;
+            }
+            
+            if(low == arr2.begin())
+            {
+                if(abs(num - *(low)) > d)
+                {
+                    count++;
+                }
+            }
+            else if(low == arr2.end())
+            {
+                if(abs(num - *(low - 1)) > d)
+                {
+                    count++;
+                }
+            }
+            else
+            {
+                if(abs(num - *(low)) > d && abs(num - *(low - 1)) > d)
+                {
+                    count++;
+                }
+            }
+            
+        }
+        
+        return count;
