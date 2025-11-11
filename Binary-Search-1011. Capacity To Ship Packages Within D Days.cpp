@@ -27,3 +27,30 @@ public:
         
     }
 };
+
+// python code
+
+class Solution:
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
+        INF = float('inf')
+        low,high = max(weights),sum(weights)
+        ans = high
+
+        def can_shipped(mid:int)->bool:
+            total_wt = 0
+            total_days = 1
+            for x in weights:
+                if total_wt + x > mid:
+                    total_days += 1
+                    total_wt = 0
+                total_wt += x
+            return total_days <= days
+        while low <= high:
+            mid = (low+high)//2
+            if can_shipped(mid):
+                high = mid -1
+                ans = mid
+            else:
+                low = mid + 1
+        return ans
+        
